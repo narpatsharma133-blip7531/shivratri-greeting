@@ -1,0 +1,195 @@
+>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shivratri Greeting 2026</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+text-align:center;
+font-family:sans-serif;
+background:radial-gradient(circle,#020024,#090979,#000);
+color:white;
+min-height:100vh;
+}
+
+/* Heading */
+h1{
+margin-top:20px;
+font-size:26px;
+text-shadow:0 0 15px gold;
+}
+
+/* Image */
+img{
+width:90%;
+max-width:280px;
+max-height:220px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 0 20px cyan;
+margin:15px auto;
+display:block;
+}
+
+/* Input */
+input{
+padding:10px;
+font-size:16px;
+border-radius:6px;
+border:none;
+margin:5px;
+width:70%;
+}
+
+/* Button */
+button{
+padding:10px 15px;
+font-size:16px;
+border:none;
+border-radius:6px;
+background:orange;
+font-weight:bold;
+cursor:pointer;
+margin:5px;
+}
+
+button:hover{
+background:gold;
+}
+
+/* Upload Button */
+.upload{
+background:green;
+color:white;
+}
+
+/* Link Box */
+#linkBox{
+margin-top:10px;
+word-break:break-all;
+color:yellow;
+}
+
+/* Trishul */
+#trishul{
+position:fixed;
+bottom:15px;
+right:15px;
+font-size:40px;
+animation:spin 4s linear infinite;
+}
+
+@keyframes spin{
+from{transform:rotate(0);}
+to{transform:rotate(360deg);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🔱 शिवरात्रि की शुभकामनाएं 🔱<br>15 फरवरी 2026</h1>
+
+<!-- Image -->
+<img id="preview" src="shivratri.jpg">
+
+<br>
+
+<!-- Upload -->
+<input type="file" accept="image/*" onchange="loadImage(event)">
+<br>
+
+<button class="upload">📷 अपनी फोटो लगाएं</button>
+
+<br>
+
+<!-- Name -->
+<input id="nameInput" type="text" placeholder="अपना नाम लिखें">
+
+<br>
+
+<!-- Buttons -->
+<button onclick="generateLink()">🔗 Link Banaye</button>
+
+<button onclick="shareAll()">📲 Share</button>
+
+<div id="linkBox"></div>
+
+<br>
+
+<p>🎨 Photo Color Change</p>
+<input type="color" onchange="changeColor(this.value)">
+
+<div id="trishul">🔱</div>
+
+<script>
+
+function loadImage(event){
+let img=document.getElementById("preview");
+img.src=URL.createObjectURL(event.target.files[0]);
+}
+
+function changeColor(color){
+document.getElementById("preview").style.filter=
+"drop-shadow(0 0 20px "+color+")";
+}
+
+function generateLink(){
+
+let name=document.getElementById("nameInput").value;
+
+if(name==""){
+alert("Naam likho pehle");
+return;
+}
+
+let text=
+"🔱 शिवरात्रि की शुभकामनाएं 🔱\n"+
+"भेजने वाला: "+name+"\n"+
+"👇 Link Dekho\n"+
+location.href;
+
+document.getElementById("linkBox").innerText=text;
+}
+
+function shareAll(){
+
+let name=document.getElementById("nameInput").value;
+
+if(name==""){
+alert("Naam likho pehle");
+return;
+}
+
+let msg=
+"🔱 शिवरात्रि की शुभकामनाएं 🔱\n"+
+"From: "+name+"\n"+
+location.href;
+
+if(navigator.share){
+
+navigator.share({
+title:"Shivratri Greeting",
+text:msg
+});
+
+}else{
+
+let url = "https://wa.me/?text=" + encodeURIComponent(msg);
+window.open(url,"_blank");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
